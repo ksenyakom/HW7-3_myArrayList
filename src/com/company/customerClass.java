@@ -22,7 +22,7 @@ public class customerClass {
         return baseSize;
     }
 
-    public void add(Customer customer) {
+    public boolean add(Customer customer) {
         if (baseSize >= n) {
             n = (int) (n * 1.5 + 1);
             resize(n);
@@ -30,6 +30,9 @@ public class customerClass {
         baseSize++;
         int i = baseSize;
         base[i - 1] = customer;
+        if (contains(customer)) return true;
+        else return false;
+
     }
 
     public void resize(int newLength) {
@@ -42,9 +45,16 @@ public class customerClass {
         return base[i];
     }
 
-    public void addAll(Customer[] array) {
-        for (int i = 0; i < array.length; i++)
+    public boolean addAll(Customer[] array) {
+        boolean res = false;
+        for (int i = 0; i < array.length; i++) {
             this.add(array[i]);
+        }
+        for (int i = 0; i < array.length; i++) {
+            if (contains(array[i])) res = true;
+            else return false;
+        }
+        return res;
     }
 
     public void clear() {
@@ -62,7 +72,8 @@ public class customerClass {
         return c;
     }
 
-    public void remove(int index) {
+    public Customer remove(int index) {
+        Customer customer = base[index];
         if (index < baseSize) {
             for (int i = index; i < baseSize; i++) {
                 if (index == baseSize - 1) base[index] = null;
@@ -70,6 +81,7 @@ public class customerClass {
             }
             baseSize--;
         } else System.out.println("нет такого индекса");
+        return customer;
     }
 
     public int indexOf(Customer customer) {

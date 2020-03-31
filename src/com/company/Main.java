@@ -13,8 +13,7 @@ public class Main {
         printBase(customers);
 
         Customer c = new Customer("Петя", "Сашин", 25);
-        customers.add(c);
-        System.out.println("\n*** add Добавили Петю Сашина - ");
+        System.out.println("\n*** add Добавили Петю Сашина - "+customers.add(c));
         printBase(customers);
 
         System.out.println("\n*** contains Содержит ли база Петю Сашина - " + customers.contains(c));
@@ -25,12 +24,10 @@ public class Main {
         Customer c1 = new Customer("Петя", "Сашин", 25);
         System.out.println("\n*** equals " + c.name + " = " + c1.name + " " + c.equals(c1));
 
-        customers.addAll(initBase());
-        System.out.println("\n*** addAll ");
+        System.out.println("\n*** addAll добавили массив - " +customers.addAll(initBase()) );
         printBase(customers);
 
-        customers.remove(1);
-        System.out.println("\n*** remove(1) ");
+        System.out.println("\n*** remove(1), удалили объект " + customers.remove(1).toString() );
         printBase(customers);
 
         System.out.println("\n*** indexOf (Петя Сашин) " + customers.indexOf(c1));
